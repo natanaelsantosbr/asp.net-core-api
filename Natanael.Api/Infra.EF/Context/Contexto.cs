@@ -11,15 +11,10 @@ namespace Infra.EF.Context
     {
         public Contexto(DbContextOptions<Contexto> options) : base(options)
         {
-            Database.EnsureCreated();
+            
         }
 
-        public Contexto()
-        {
-
-        }
-
-        public virtual DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

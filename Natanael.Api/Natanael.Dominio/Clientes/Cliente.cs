@@ -21,6 +21,8 @@ namespace Natanael.Dominio.Clientes
 
         public string Email { get; protected set; }
 
+        public string CPF { get; protected set; }
+
         public void AlterarDados(string nome, string email)
         {
             this.Nome = nome;
