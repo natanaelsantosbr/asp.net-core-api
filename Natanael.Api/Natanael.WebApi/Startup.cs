@@ -1,11 +1,15 @@
+using Infra.EF;
+using Infra.EF.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Natanael.Aplicacao.GestaoDeClientes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +30,13 @@ namespace Natanael.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddDbContext<Contexto>(
+        options => options.UseSqlServer(Configuration.GetConnectionString("ConexaoCliente")));
+
+            services.AddScoped<IServicoExternoDePersistencia, ServicoExternoDePersistenciaViaEF>();
+
+            services.AddScoped<IServicoDeGestaoDeClientes, ServicoDeGestaoDeClientes>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

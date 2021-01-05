@@ -8,7 +8,7 @@ namespace Natanael.Dominio.Clientes
     {
         List<Cliente> Listar();
 
-        Cliente BuscarPorId();
+        Cliente BuscarPorId(int id);
 
         void Cadastrar(Cliente cliente);
 
