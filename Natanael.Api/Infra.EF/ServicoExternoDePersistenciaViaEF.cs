@@ -1,6 +1,7 @@
 ﻿using Infra.EF.Context;
 using Infra.EF.Repositorios;
 using Natanael.Dominio.Clientes;
+using Natanael.Dominio.Usuarios;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,6 +18,8 @@ namespace Infra.EF
         }
 
         public IRepositorioDeClientes RepositorioDeClientes => new RepositorioDeClientes(this._contexto);
+
+        public IRepositorioDeUsuarios RepositorioDeUsuarios => new RepositorioDeUsuarios(this._contexto);
 
         public void Dispose()
         {
